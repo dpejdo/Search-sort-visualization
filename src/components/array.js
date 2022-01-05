@@ -1,59 +1,20 @@
 import { useState } from 'react';
-
+import { Input } from './template/input/input';
 let Array = () => {
   const [value, setValue] = useState('');
   const [array, setArray] = useState([]);
   const handleClick = () => {
     setArray((arr) => [...arr, Number(value)]);
   };
-  const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
-  const linearSearch = async (arr, x) => {
-    async function load() {
-      for (let i = 0; i < arr.length; i++) {
-        let element;
-        if (i > 0) {
-          //funkcija za micanje  classe
-          element = document.getElementById(`${String(Number(i - 1))}`);
-          console.log(element.classList);
-          element.classList.remove('active');
-        }
-        if (arr[i] === x) {
-          let element = document.getElementById(`${String(i)}`);
-          element.classList.add('bg-green-300');
-          return i;
-        }
+  const addInput = (e) => {
+    setValue(e.target.value);
+  };
 
-        handleActive(i);
-        console.log(arr[i]);
-        await timer(1000);
-      }
-    }
-    await load();
-    return -1;
-  };
-  const output = () => {
-    console.log(linearSearch(array, 3));
-  };
-  const handleActive = (index) => {
-    let element = document.getElementById(`${String(index)}`);
-    element.classList.add('active');
-  };
-  const css = ` .active {
-          background:blue;
-          border:1px solid purple
-        }
-  `;
   return (
     <div className="">
       <form>
-        <label className="block p-2">Add value</label>
-        <input
-          className="m-2 border"
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
+        <Input value={value} handleChange={addInput} />
         <button className="border" type="button" onClick={handleClick}>
           Add value
         </button>
@@ -69,7 +30,7 @@ let Array = () => {
           </p>
         ))}
       </div>
-      <button className="bg-red-300 rounded p-4" type="button" onClick={output}>
+      <button className="bg-red-300 rounded p-4" type="button">
         Search
       </button>
       <button className="bg-red-300 rounded p-4" type="button">
