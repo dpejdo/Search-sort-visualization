@@ -9,9 +9,15 @@ beforeEach(() => {
 });
 
 test('change input value', () => {
-  expect(screen.getByText('Input value')).toBeInTheDocument();
-  expect(screen.getByTestId('input')).toBeInTheDocument();
-  let input = screen.getByTestId('input');
+  expect(
+    screen.getByRole('textbox', {
+      name: /input elements/i,
+    })
+  ).toBeInTheDocument();
+  let input = screen.getByRole('textbox', {
+    name: /input elements/i,
+  });
+  expect(input).toBeInTheDocument();
   userEvent.type(input, '32');
   expect(input.value).toBe('32');
 });
@@ -19,7 +25,9 @@ test('change input value', () => {
 test('Validate inputs ', () => {
   let error = screen.queryByText(/Input only accepts numbers/);
   expect(error).not.toBeInTheDocument();
-  let input = screen.getByTestId('input');
+  let input = screen.getByRole('textbox', {
+    name: /input elements/i,
+  });
   userEvent.type(input, 'qwert');
   let button = screen.getByTestId('add-btn');
   userEvent.click(button);
@@ -30,7 +38,9 @@ test('Validate inputs ', () => {
 test('Error message not triggered  ', () => {
   let error = screen.queryByText(/Input only accepts numbers/);
   expect(error).not.toBeInTheDocument();
-  let input = screen.getByTestId('input');
+  let input = screen.getByRole('textbox', {
+    name: /input elements/i,
+  });
   userEvent.type(input, '9');
   let button = screen.getByTestId('add-btn');
   userEvent.click(button);
@@ -39,15 +49,29 @@ test('Error message not triggered  ', () => {
 });
 
 test('Displaying array  ', () => {
-  let input = screen.getByTestId('input');
+  let input = screen.getByRole('textbox', {
+    name: /input elements/i,
+  });
   userEvent.type(input, '9');
   let button = screen.getByTestId('add-btn');
   userEvent.click(button);
   let array = screen.getByText('9');
-  console.log(array);
   expect(array).toBeInTheDocument();
   userEvent.type(input, '12');
   userEvent.click(button);
   let arrayElem = screen.getByText('9');
   expect(arrayElem).toBeInTheDocument();
+});
+
+test('Display error message when trying to search for value with empty input', () => {
+  let input = screen.getByRole('textbox', {
+    name: /input elements/i,
+  });
+  expect(input.value).toBe('');
+  let searchButton = screen.getByRole('button', {
+    name: /search/i,
+  });
+  userEvent.click(searchButton);
+  let errorMsg = screen.getByText(/please enter the value/i);
+  expect(errorMsg).toBeInTheDocument();
 });

@@ -1,28 +1,30 @@
 // import { useState } from 'react';
 import PropTypes from 'prop-types';
 export const Input = (props) => {
-  //  const [error, setError] = useState('');
-  const { value, getValue } = props;
+  const { label, value, getValue, onKeyDown } = props;
   const handleChange = (e) => {
-    getValue(e.target.value);
+    getValue({ label: label, value: e.target.value });
   };
   return (
-    <div className="m-3">
-      <label className="block">Input value</label>
+    <div className="m-3 inline">
+      <label htmlFor={label ? 'search_input' : 'element_input'} className="block">
+        {label ? 'Search for element' : 'Input elements'}
+      </label>
       <input
-        data-testid="input"
+        id={label ? 'search_input' : 'element_input'}
+        type="text"
+        className="p-1 my-2 border rounded bg-black text-center"
         value={value}
         onChange={handleChange}
-        type="text"
-        className="p-1 my-2 border rounded border-red-600"
+        onKeyDown={onKeyDown}
       />
-
-      {/* {error && <p>{error}</p>} */}
     </div>
   );
 };
 Input.propTypes = {
+  label: PropTypes.string,
   value: PropTypes.string,
   getValue: PropTypes.func,
+  onKeyDown: PropTypes.func,
   props: PropTypes.object,
 };
