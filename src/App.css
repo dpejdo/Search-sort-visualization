@@ -37,9 +37,14 @@
   }
 }
 .active {
-  background: blue;
-  border: 1px solid purple;
+  background: blue !important;
 }
 .found {
   background-color: #064e3b !important;
+}
+.prev {
+  background-color: orangered;
+}
+.border-values {
+  background-color: rgb(250 204 21 / 0.7);
 }

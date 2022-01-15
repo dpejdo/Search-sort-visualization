@@ -1,13 +1,14 @@
 import React from 'react';
-import BinarySearchPage from '../linearSearch';
+import BinarySearchPage from '../binarySearch';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
 import { timer } from '../../../utilites/timer';
+
 beforeEach(() => {
   render(<BinarySearchPage />);
 });
-test('linearSearch Tests', async () => {
+test('binary search test', async () => {
   let input = screen.getByRole('textbox', {
     name: /input elements/i,
   });
@@ -33,7 +34,7 @@ test('linearSearch Tests', async () => {
   });
   userEvent.click(buttonSearch);
   async function wait() {
-    await timer(5000);
+    await timer(9000);
   }
   await wait();
   let value = await screen.getByTestId(3).classList;
@@ -41,6 +42,11 @@ test('linearSearch Tests', async () => {
 }, 10000);
 
 test('linearSearch test check if element is not found and pass the error message', async () => {
+  /*  act(() => {
+    let { debug } = render(<BinarySearchPage />);
+    debug();
+  }); */
+
   let input = screen.getByRole('textbox', {
     name: /input elements/i,
   });
@@ -55,6 +61,7 @@ test('linearSearch test check if element is not found and pass the error message
   userEvent.click(button);
   userEvent.type(input, '3');
   userEvent.click(button);
+
   userEvent.type(
     screen.getByRole('textbox', {
       name: /search for element/i,
@@ -66,12 +73,11 @@ test('linearSearch test check if element is not found and pass the error message
   });
   userEvent.click(buttonSearch);
   async function wait() {
-    await timer(5000);
+    await timer(7000);
   }
   await wait();
-
   expect(screen.getByText(/element is not found/i)).toBeInTheDocument();
-}, 10000);
+}, 15000);
 
 test('Reset all css for array that has been searched', async () => {
   let input = screen.getByRole('textbox', {

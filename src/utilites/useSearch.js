@@ -52,6 +52,8 @@ export const useSearch = () => {
     elements.forEach((value) => {
       value.classList.remove('found');
       value.classList.remove('active');
+      value.classList.remove('border-values');
+      value.classList.remove('prev');
     });
   }
   function removeAll() {

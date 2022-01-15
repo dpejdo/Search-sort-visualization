@@ -16,7 +16,7 @@ export const linearSearch = async (arr, start, end, x) => {
       handleActive(i);
       await timer(1000);
     }
-    document.getElementById(`${String(Number(arr.length - 1))}`).classList.remove('active');
+    //document.getElementById(`${String(Number(arr.length - 1))}`).classList.remove('active');
   }
   let result = await load();
   if (result == undefined) return -1;

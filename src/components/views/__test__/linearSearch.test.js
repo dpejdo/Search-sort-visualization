@@ -55,6 +55,7 @@ test('linearSearch test check if element is not found and pass the error message
   userEvent.click(button);
   userEvent.type(input, '3');
   userEvent.click(button);
+
   userEvent.type(
     screen.getByRole('textbox', {
       name: /search for element/i,
@@ -66,12 +67,11 @@ test('linearSearch test check if element is not found and pass the error message
   });
   userEvent.click(buttonSearch);
   async function wait() {
-    await timer(5000);
+    await timer(10000);
   }
   await wait();
-
   expect(screen.getByText(/element is not found/i)).toBeInTheDocument();
-}, 10000);
+}, 15000);
 
 test('Reset all css for array that has been searched', async () => {
   let input = screen.getByRole('textbox', {

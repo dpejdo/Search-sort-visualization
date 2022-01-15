@@ -3,8 +3,8 @@ import { timer, handleActive } from '../timer';
 export const binarySearch = async (arr, start, end, x) => {
   async function load() {
     let mid = Math.floor((end + start) / 2);
-    document.getElementById(`${String(start)}`).classList.add('bg-yellow-400');
-    document.getElementById(`${String(end)}`).classList.add('bg-yellow-400');
+    document.getElementById(`${String(start)}`).classList.add('border-values');
+    document.getElementById(`${String(end)}`).classList.add('border-values');
     handleActive(mid);
     await timer(2000);
     if (arr[mid] === x) {
@@ -14,10 +14,10 @@ export const binarySearch = async (arr, start, end, x) => {
     }
     if (start >= end) return -1;
 
-    document.getElementById(`${String(end)}`).classList.remove('bg-yellow-400');
-    document.getElementById(`${String(start)}`).classList.remove('bg-yellow-400');
+    document.getElementById(`${String(end)}`).classList.remove('border-values');
+    document.getElementById(`${String(start)}`).classList.remove('border-values');
     document.getElementById(`${String(mid)}`).classList.remove('active');
-    if (mid < x) return binarySearch(arr, mid + 1, end, x);
+    if (arr[mid] < x) return binarySearch(arr, mid + 1, end, x);
     else return binarySearch(arr, start, mid - 1, x);
   }
   let result = await load();
