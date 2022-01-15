@@ -1,6 +1,6 @@
 import { Grid } from '../template/grid/grid';
 import { binarySearch } from '../../utilites/search/binarySearchUtl';
-const linearSearchPage = () => {
+const BinarySearchPage = () => {
   return <Grid func={binarySearch} label={'Binary search'} />;
 };
-export default linearSearchPage;
+export default BinarySearchPage;

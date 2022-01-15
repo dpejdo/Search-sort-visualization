@@ -4,6 +4,7 @@ import LinearSearchPage from '../components/views/linearSearch';
 import BinarySearchPage from '../components/views/binarySearch';
 import JumpSearchPage from '../components/views/jumpSearch';
 import InterpolationSearchPage from '../components/views/interpolationSearch';
+import ExponentialSearchPage from '../components/views/exponentailSearch';
 
 export const Router = () => {
   return (
@@ -14,6 +15,7 @@ export const Router = () => {
         <Route path="/binary-search" element={<BinarySearchPage />} />
         <Route path="/jump-search" element={<JumpSearchPage />} />
         <Route path="/interpolation-search" element={<InterpolationSearchPage />} />
+        <Route path="/exponential-search" element={<ExponentialSearchPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -26,6 +26,5 @@ export const jumpSearch = async (arr, start, end, value) => {
     return -1;
   }
   let result = await load();
-  console.log(result);
   if (result == -1) return -1;
 };

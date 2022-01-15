@@ -14,7 +14,7 @@ export const interpolationSearch = async (arr, start, end, value) => {
       delta = (value - arr[low]) / (arr[high] - arr[low]);
       position = low + Math.floor((high - low) * delta);
       document.getElementById(`${String(position)}`).classList.add('active');
-      await timer(250);
+      await timer(400);
       if (arr[position] === value) {
         document.getElementById(`${String(position)}`).classList.add('found');
         return position;
@@ -30,6 +30,5 @@ export const interpolationSearch = async (arr, start, end, value) => {
     return -1;
   }
   let result = await load();
-  console.log(result);
   if (result == -1) return -1;
 };

@@ -1,6 +1,6 @@
 import { Grid } from '../template/grid/grid';
 import { jumpSearch } from '../../utilites/search/jumpSearchUtl';
-const linearSearchPage = () => {
+const JumpSearchPage = () => {
   return <Grid func={jumpSearch} label={'Jump search'} />;
 };
-export default linearSearchPage;
+export default JumpSearchPage;

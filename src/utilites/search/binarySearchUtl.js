@@ -6,7 +6,7 @@ export const binarySearch = async (arr, start, end, x) => {
     document.getElementById(`${String(start)}`).classList.add('border-values');
     document.getElementById(`${String(end)}`).classList.add('border-values');
     handleActive(mid);
-    await timer(2000);
+    await timer(1500);
     if (arr[mid] === x) {
       document.getElementById(`${String(mid)}`).classList.remove('active');
       document.getElementById(`${String(mid)}`).classList.add('found');
@@ -21,6 +21,5 @@ export const binarySearch = async (arr, start, end, x) => {
     else return binarySearch(arr, start, mid - 1, x);
   }
   let result = await load();
-  console.log(result);
   if (result == -1) return -1;
 };

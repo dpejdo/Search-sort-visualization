@@ -8,14 +8,21 @@ import userEvent from '@testing-library/user-event';
 import { timer } from '../../../utilites/timer';
 import { jumpSearch } from '../../../utilites/search/jumpSearchUtl';
 import { interpolationSearch } from '../../../utilites/search/interpolationSearchUtl';
-let arr = [linearSearch, binarySearch, jumpSearch, interpolationSearch];
-let names = ['Linear search', 'Binary search', 'Jump search', 'Interpolation search'];
+import { exponentialSearch } from '../../../utilites/search/exponentialSearchUtl';
+let arr = [linearSearch, binarySearch, jumpSearch, interpolationSearch, exponentialSearch];
+let names = [
+  'Linear search',
+  'Binary search',
+  'Jump search',
+  'Interpolation search',
+  'Exponential search',
+];
 for (let i in arr) {
   /*  beforeEach(() => {
     render(<Grid func={arr[i]} label={names[i]} />);
   }); */
 
-  test('binary search test', async () => {
+  test(`${names[i]} test`, async () => {
     render(<Grid func={arr[i]} label={names[i]} />);
     let input = screen.getByRole('textbox', {
       name: /input elements/i,
@@ -49,7 +56,7 @@ for (let i in arr) {
     expect(value).toContain('found');
   }, 10000);
 
-  test('linearSearch test check if element is not found and pass the error message', async () => {
+  test(`${names[i]} test check if element is not found and pass the error message`, async () => {
     /*  act(() => {
     let { debug } = render(<Grid func={binarySearch} label={'Binary search'} />);
 
@@ -89,7 +96,7 @@ for (let i in arr) {
     expect(screen.getByText(/element is not found/i)).toBeInTheDocument();
   }, 15000);
 
-  test('Reset all css for array that has been searched', async () => {
+  test(`${names[i]} reset all css for array that has been searched`, async () => {
     render(<Grid func={arr[i]} label={names[i]} />);
 
     let input = screen.getByRole('textbox', {
