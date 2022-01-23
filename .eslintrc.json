@@ -12,7 +12,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "prettier", "react-hooks"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "prettier/prettier": [
@@ -20,6 +20,8 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

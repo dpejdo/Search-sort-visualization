@@ -1,14 +1,14 @@
 import React from 'react';
-import { binarySearch } from '../../../utilites/search/binarySearchUtl';
-import { linearSearch } from '../../../utilites/search/linearSearchUtl';
-import { Grid } from '../../template/grid/grid';
+import { binarySearch } from '../../../../utilites/search/binarySearchUtl';
+import { linearSearch } from '../../../../utilites/search/linearSearchUtl';
+import { Grid } from '../../../template/grid/grid';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
-import { timer } from '../../../utilites/timer';
-import { jumpSearch } from '../../../utilites/search/jumpSearchUtl';
-import { interpolationSearch } from '../../../utilites/search/interpolationSearchUtl';
-import { exponentialSearch } from '../../../utilites/search/exponentialSearchUtl';
+import { timer } from '../../../../utilites/timer';
+import { jumpSearch } from '../../../../utilites/search/jumpSearchUtl';
+import { interpolationSearch } from '../../../../utilites/search/interpolationSearchUtl';
+import { exponentialSearch } from '../../../../utilites/search/exponentialSearchUtl';
 let arr = [linearSearch, binarySearch, jumpSearch, interpolationSearch, exponentialSearch];
 let names = [
   'Linear search',
