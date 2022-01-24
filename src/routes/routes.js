@@ -7,6 +7,7 @@ import InterpolationSearchPage from '../components/views/search/interpolationSea
 import ExponentialSearchPage from '../components/views/search/exponentailSearch';
 import SelectionSortPage from '../components/views/sort/selectionSort';
 import BubbleSortPage from '../components/views/sort/bubbleSort';
+import InsertionSortPage from '../components/views/sort/insertionSort';
 
 export const Router = () => {
   return (
@@ -20,6 +21,7 @@ export const Router = () => {
         <Route path="/exponential-search" element={<ExponentialSearchPage />} />
         <Route path="/selection-sort" element={<SelectionSortPage />} />
         <Route path="/bubble-sort" element={<BubbleSortPage />} />
+        <Route path="/insertion-sort" element={<InsertionSortPage />} />
       </Routes>
     </BrowserRouter>
   );
