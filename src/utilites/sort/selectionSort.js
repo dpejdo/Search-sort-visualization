@@ -5,7 +5,6 @@ export async function selectionSort(value) {
     for (let i = 0; i < value.length; i++) {
       let min = i;
       let current = document.getElementById(i);
-      //first number that we are comparing
       current.style.backgroundColor = 'purple';
       await timer(40);
 
@@ -22,7 +21,6 @@ export async function selectionSort(value) {
       swap(value, i, min);
       minDOM.style.backgroundColor = 'red';
 
-      //   first number done with comparing
       current.style.backgroundColor = 'green';
     }
     console.log(value);

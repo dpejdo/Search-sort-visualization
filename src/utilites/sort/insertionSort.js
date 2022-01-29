@@ -1,5 +1,5 @@
 import { timer } from '../timer';
-
+const ANIMATION_SPEED = 300;
 export async function insertionSort(arr) {
   async function load() {
     for (let i = 1; i < arr.length; i++) {
@@ -18,14 +18,14 @@ export async function insertionSort(arr) {
         key2.style.backgroundColor = 'purple';
         key1.style.backgroundColor = 'purple';
 
-        await timer(100);
+        await timer(ANIMATION_SPEED);
 
         arr[j + 1] = arr[j];
         j--;
-        key1.style.backgroundColor = 'red';
-        key2.style.backgroundColor = 'red';
+        key1.style.backgroundColor = 'green';
+        key2.style.backgroundColor = 'green';
       }
-      await timer(100);
+      await timer(ANIMATION_SPEED);
 
       domKey.style.backgroundColor = 'green';
       arr[j + 1] = key;

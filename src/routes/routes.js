@@ -8,10 +8,15 @@ import ExponentialSearchPage from '../components/views/search/exponentailSearch'
 import SelectionSortPage from '../components/views/sort/selectionSort';
 import BubbleSortPage from '../components/views/sort/bubbleSort';
 import InsertionSortPage from '../components/views/sort/insertionSort';
+import MergeSortPage from '../components/views/sort/mergeSort';
+import HeapSortPage from '../components/views/sort/heapSort';
+import QuickSortPage from '../components/views/sort/quickSort';
+import Navbar from '../components/nav';
 
 export const Router = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/linear-search" element={<LinearSearchPage />} />
@@ -22,6 +27,9 @@ export const Router = () => {
         <Route path="/selection-sort" element={<SelectionSortPage />} />
         <Route path="/bubble-sort" element={<BubbleSortPage />} />
         <Route path="/insertion-sort" element={<InsertionSortPage />} />
+        <Route path="/merge-sort" element={<MergeSortPage />} />
+        <Route path="/heap-sort" element={<HeapSortPage />} />
+        <Route path="/quick-sort" element={<QuickSortPage />} />
       </Routes>
     </BrowserRouter>
   );
