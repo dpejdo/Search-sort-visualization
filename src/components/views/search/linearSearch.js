@@ -1,6 +1,5 @@
 import { Grid } from '../../template/grid/grid';
-import { linearSearch } from '../../../utilites/search/linearSearchUtl';
-const linearSearchPage = () => {
+import { linearSearch } from '../../../utilites/search';
+export const LinearSearchPage = () => {
   return <Grid func={linearSearch} label={'Linear search'} />;
 };
-export default linearSearchPage;

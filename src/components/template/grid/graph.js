@@ -6,13 +6,7 @@ export const Graph = (prop) => {
 
   return (
     <div>
-      <div className="flex justify-center m-10 items-center flex-col">
-        <button className="border text-center px-5 py-2 bg-blue-600" onClick={() => sort(array)}>
-          Swap
-        </button>
-        <h2>{label}</h2>
-      </div>
-      <div data-testid="graph" className="flex justify-center items-end h-2/3 max-h-full">
+      <div data-testid="graph" className="flex justify-center items-start h-2/3 max-h-full">
         {array.map((value, index) => (
           <div
             className="border bg-red-600 w-10 text-center pillar"
@@ -23,6 +17,12 @@ export const Graph = (prop) => {
             {value}
           </div>
         ))}
+      </div>
+      <div className="flex justify-center m-10 items-center flex-col">
+        <button className="border text-center px-5 py-2 bg-blue-600" onClick={() => sort(array)}>
+          Swap
+        </button>
+        <h2>{label}</h2>
       </div>
     </div>
   );

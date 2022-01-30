@@ -181,7 +181,9 @@ function Navbar() {
                 </ul>
               </div>
             </li>
-            <button className="border px-2">Start</button>
+            <button className="border px-2" type="button">
+              Start
+            </button>
           </ul>
         </div>
       </div>
