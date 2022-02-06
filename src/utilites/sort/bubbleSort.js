@@ -1,6 +1,5 @@
 import { swap } from '../swap';
 import { timer } from '../timer';
-
 export async function bubbleSort(arr) {
   async function load() {
     for (let i = 0; i < arr.length; i++) {

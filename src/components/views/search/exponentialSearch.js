@@ -1,5 +1,0 @@
-import { Grid } from '../../template/grid/grid';
-import { exponentialSearch } from '../../../utilites/search';
-export const ExponentialSearchPage = () => {
-  return <Grid func={exponentialSearch} label={'Exponential search'} />;
-};

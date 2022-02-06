@@ -1,4 +1,21 @@
+import useStore from '../store/useStore';
+import { useEffect, useState } from 'react';
+import { useAlgorithm } from '../utilites/reducer';
+const resetStyle = () => {
+  const allElements = document.querySelectorAll('.pillar');
+  allElements.forEach((value) => (value.style.backgroundColor = 'red'));
+};
 function Navbar() {
+  const [value, setValue] = useState('1');
+  const [algorithm, setAlgorithm] = useAlgorithm();
+  let reset = useStore((state) => state.setArray);
+  let setSpeed = useStore((state) => state.setSpeed);
+  let get = useStore((state) => state);
+  useEffect(() => {
+    get.setFunction(algorithm);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [algorithm, setAlgorithm]);
+
   return (
     <nav className="px-2 py-2 bg-gray-800/90 border-gray-200 dark:bg-gray-800 dark:border-gray-700">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -35,7 +52,7 @@ function Navbar() {
             ></path>
           </svg>
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="mobile-menu">
+        <div className="hidden w-full md:flex md:justify-center" id="mobile-menu">
           <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
             <li>
               <button
@@ -43,7 +60,7 @@ function Navbar() {
                 data-dropdown-toggle="dropdownSearch"
                 className="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
               >
-                Search{' '}
+                Search
                 <svg
                   className="ml-1 w-4 h-4"
                   fill="currentColor"
@@ -61,18 +78,26 @@ function Navbar() {
                 id="dropdownSearch"
                 className="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
               >
-                <ul className="py-1" aria-labelledby="dropdownButton">
+                <ul
+                  className="py-1"
+                  aria-labelledby="dropdownButton"
+                  onClick={(e) => {
+                    setAlgorithm({ type: e.target.textContent });
+                    resetStyle();
+                    reset();
+                  }}
+                >
                   <li>
                     <a
-                      href="/linear-search"
+                      // href="/linear-search"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
-                      Linear Search
+                      Linear search
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/binary-search"
+                      // href="/binary-search"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Binary search
@@ -80,7 +105,7 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/jump-search"
+                      /*  href="/jump-search" */
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Jump search
@@ -88,7 +113,7 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/exponential-search"
+                      // href="/exponential-search"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Exponential search
@@ -96,7 +121,7 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/interpolation-search"
+                      // href="/interpolation-search"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Interpolation search
@@ -111,7 +136,7 @@ function Navbar() {
                 data-dropdown-toggle="dropdownSort"
                 className="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
               >
-                Sort{' '}
+                Sort
                 <svg
                   className="ml-1 w-4 h-4"
                   fill="currentColor"
@@ -129,10 +154,19 @@ function Navbar() {
                 id="dropdownSort"
                 className="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
               >
-                <ul className="py-1" aria-labelledby="dropdownButton">
+                <ul
+                  className="py-1"
+                  aria-labelledby="dropdownButton"
+                  onClick={(e) => {
+                    setAlgorithm({ type: e.target.textContent });
+                    resetStyle();
+                    reset();
+                  }}
+                >
                   <li>
                     <a
-                      href="/selection-sort"
+                      // href="/selection-sort"
+                      data-testid="selection sort"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Selection sort
@@ -140,7 +174,8 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/bubble-sort"
+                      // href="/bubble-sort"
+                      data-testid="bubble sort"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Bubble sort
@@ -148,7 +183,8 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/insertion-sort"
+                      // href="/insertion-sort"
+                      data-testid="insertion sort"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Insertion sort
@@ -156,7 +192,8 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/merge-sort"
+                      // href="/merge-sort"
+                      data-testid="merge sort"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Merge sort
@@ -164,7 +201,8 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/heap-sort"
+                      // href="/heap-sort"
+                      data-testid="heap sort"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Heap sort
@@ -172,7 +210,8 @@ function Navbar() {
                   </li>
                   <li>
                     <a
-                      href="/quick-sort"
+                      // href="/quick-sort"
+                      data-testid="quick sort"
                       className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       Quick sort
@@ -181,9 +220,48 @@ function Navbar() {
                 </ul>
               </div>
             </li>
-            <button className="border px-2" type="button">
-              Start
-            </button>
+            {get.isSort && (
+              <button
+                className="border px-2"
+                type="button"
+                onClick={() => {
+                  reset();
+                  resetStyle();
+                }}
+              >
+                New array
+              </button>
+            )}
+            <div className="flex justify-around content-center">
+              <input
+                type="range"
+                id="volume"
+                name="volume"
+                min="1"
+                max="5"
+                value={value}
+                onChange={(e) => {
+                  setValue(e.target.value);
+                  setSpeed(e.target.value);
+                  get.setLimit(e.target.value);
+                  get.setArray();
+                  resetStyle();
+                }}
+              />
+              <label className="px-3" htmlFor="volume">
+                Speed
+              </label>
+              {get.isSort && (
+                <button
+                  className="border px-2"
+                  type="button"
+                  onClick={() => algorithm.algorithm(get.array)}
+                >
+                  Start
+                </button>
+              )}
+              <p className="px-3 font-extrabold">{get.currentFunctionName}</p>
+            </div>
           </ul>
         </div>
       </div>

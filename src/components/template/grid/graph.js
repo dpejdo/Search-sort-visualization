@@ -1,8 +1,12 @@
-import { useState } from 'react';
-import { ARRAY } from '../../../utilites/genArray';
-export const Graph = (prop) => {
-  const { sort, label } = prop;
-  const [array] = useState(ARRAY);
+import { useEffect } from 'react';
+import useStore from '../../../store/useStore';
+export const Graph = () => {
+  const array = useStore((state) => state.array);
+  const setArray = useStore((state) => state.setArray);
+  useEffect(() => {
+    setArray();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -12,17 +16,11 @@ export const Graph = (prop) => {
             className="border bg-red-600 w-10 text-center pillar"
             id={`${String(index)}`}
             key={index}
-            style={{ height: 100 + value + 'px', transition: ' 0.2s all ease' }}
+            style={{ height: 100 + value / 1.5 + 'px', transition: ' 0.2s all ease' }}
           >
             {value}
           </div>
         ))}
-      </div>
-      <div className="flex justify-center m-10 items-center flex-col">
-        <button className="border text-center px-5 py-2 bg-blue-600" onClick={() => sort(array)}>
-          Swap
-        </button>
-        <h2>{label}</h2>
       </div>
     </div>
   );
