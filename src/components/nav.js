@@ -236,27 +236,28 @@ function Navbar() {
                 New array
               </button>
             )}
-            <div className="flex justify-around content-center">
-              <input
-                type="range"
-                id="volume"
-                name="volume"
-                min="1"
-                max="5"
-                value={value}
-                disabled={isDisabled}
-                onChange={(e) => {
-                  setValue(e.target.value);
-                  setSpeed(e.target.value);
-                  get.setLimit(e.target.value);
-                  get.setArray();
-                  resetStyle();
-                }}
-              />
-              <label className="px-3" htmlFor="volume">
-                Speed
-              </label>
-              {get.isSort && (
+            {get.isSort && (
+              <div className="flex justify-around content-center">
+                <input
+                  type="range"
+                  id="volume"
+                  name="volume"
+                  min="1"
+                  max="5"
+                  value={value}
+                  disabled={isDisabled}
+                  onChange={(e) => {
+                    setValue(e.target.value);
+                    setSpeed(e.target.value);
+                    get.setLimit(e.target.value);
+                    get.setArray();
+                    resetStyle();
+                  }}
+                />
+
+                <label className="px-3" htmlFor="volume">
+                  Speed
+                </label>
                 <button
                   className="border px-2"
                   type="button"
@@ -268,9 +269,10 @@ function Navbar() {
                 >
                   Start
                 </button>
-              )}
-              <p className="px-3 font-extrabold">{get.currentFunctionName}</p>
-            </div>
+              </div>
+            )}
+
+            <p className="px-3 font-extrabold">{get.currentFunctionName}</p>
           </ul>
         </div>
       </div>
