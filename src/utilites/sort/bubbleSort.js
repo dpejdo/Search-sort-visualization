@@ -19,6 +19,6 @@ export async function bubbleSort(arr) {
       current.style.backgroundColor = 'green';
     }
   }
-  load();
-  console.log(arr);
+  await load();
+  return false;
 }

@@ -1,5 +1,5 @@
-export { binarySearch } from './binarySearchUtl';
-export { linearSearch } from './linearSearchUtl';
-export { jumpSearch } from './jumpSearchUtl';
-export { interpolationSearch } from './interpolationSearchUtl';
-export { exponentialSearch } from './exponentialSearchUtl';
+export { binarySearch } from './binarySearch';
+export { linearSearch } from './linearSearch';
+export { jumpSearch } from './jumpSearch';
+export { interpolationSearch } from './interpolationSearch';
+export { exponentialSearch } from './exponentialSearch';

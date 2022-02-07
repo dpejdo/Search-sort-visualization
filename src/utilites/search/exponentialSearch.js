@@ -1,5 +1,5 @@
 import { timer } from '../timer';
-import { binarySearch } from './binarySearchUtl';
+import { binarySearch } from './binarySearch';
 export const exponentialSearch = async (arr, start, end, value) => {
   async function load() {
     document.getElementById(`${String(start)}`).classList.add('active');

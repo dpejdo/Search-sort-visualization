@@ -4,10 +4,3 @@ export * from './bubbleSort';
 export * from './quickSort';
 export * from './selectionSort';
 export * from './mergeSort';
-/* export * from  */
-/*   heapSort,
-  insertionSort,
-  bubbleSort,
-  quickSortVisual,
-  selectionSort,
-}; */

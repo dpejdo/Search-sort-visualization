@@ -30,7 +30,6 @@ export async function insertionSort(arr) {
       domKey.style.backgroundColor = 'green';
       arr[j + 1] = key;
     }
-    console.log(arr);
   }
   await load();
 }

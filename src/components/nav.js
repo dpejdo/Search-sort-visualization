@@ -8,6 +8,7 @@ const resetStyle = () => {
 function Navbar() {
   const [value, setValue] = useState('1');
   const [algorithm, setAlgorithm] = useAlgorithm();
+  const [isDisabled, setDisabled] = useState(false);
   let reset = useStore((state) => state.setArray);
   let setSpeed = useStore((state) => state.setSpeed);
   let get = useStore((state) => state);
@@ -59,6 +60,7 @@ function Navbar() {
                 id="dropdownButton"
                 data-dropdown-toggle="dropdownSearch"
                 className="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                disabled={isDisabled}
               >
                 Search
                 <svg
@@ -135,6 +137,7 @@ function Navbar() {
                 id="dropdownButton"
                 data-dropdown-toggle="dropdownSort"
                 className="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                disabled={isDisabled}
               >
                 Sort
                 <svg
@@ -228,6 +231,7 @@ function Navbar() {
                   reset();
                   resetStyle();
                 }}
+                disabled={isDisabled}
               >
                 New array
               </button>
@@ -240,6 +244,7 @@ function Navbar() {
                 min="1"
                 max="5"
                 value={value}
+                disabled={isDisabled}
                 onChange={(e) => {
                   setValue(e.target.value);
                   setSpeed(e.target.value);
@@ -255,7 +260,11 @@ function Navbar() {
                 <button
                   className="border px-2"
                   type="button"
-                  onClick={() => algorithm.algorithm(get.array)}
+                  onClick={() => {
+                    setDisabled(true);
+                    console.log(algorithm.algorithm(get.array).then((data) => setDisabled(data)));
+                  }}
+                  disabled={isDisabled}
                 >
                   Start
                 </button>

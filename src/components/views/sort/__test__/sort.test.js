@@ -21,7 +21,6 @@ for (let j = 0; j < arr.length; j++)
     test(`${arr[j]}`, async () => {
       let nav = render(<Navbar />);
       let navButton = nav.getByRole('button', { name: /sort/i });
-      console.log(navButton);
       userEvent.click(navButton);
       let algoButton = nav.getByTestId(`${arr[j]}`);
       userEvent.click(algoButton);
@@ -30,13 +29,11 @@ for (let j = 0; j < arr.length; j++)
       let all = element.querySelectorAll('div');
       let arrayOfElem = [];
       for (let value of all) arrayOfElem.push(value.textContent);
-      console.log(arrayOfElem);
       let button = nav.getByRole('button', { name: /start/i });
       userEvent.click(button);
-
+      expect(button).toBeDisabled();
       await wait(20000);
       let newArray = [];
       for (let value of all) newArray.push(value.textContent);
-      console.log(newArray);
       expect(newArray).toEqual(arrayOfElem.sort((a, b) => a - b));
     }, 22000);

@@ -1,3 +1,5 @@
+import { timer } from '../timer';
+
 const ANIMATION_SPEED = 30;
 
 function mergeSort(arr) {
@@ -45,30 +47,29 @@ function doMerge(mainArray, startIdx, middleIdx, endIdx, secondaryArray, animati
   }
 }
 
-export function visual(arr) {
+export async function visual(arr) {
   const animations = mergeSort(arr);
-  for (let i = 0; i < animations.length; i++) {
-    const arrayBars = document.getElementsByClassName('pillar');
-    const isColorChange = i % 3 !== 2;
-    if (isColorChange) {
-      const [barOneIdx, barTwoIdx] = animations[i];
-      const barOneStyle = arrayBars[barOneIdx].style;
-      const barTwoStyle = arrayBars[barTwoIdx].style;
-      const color = i % 3 === 0 ? 'purple' : 'blue';
-      setTimeout(() => {
+  async function load() {
+    for (let i = 0; i < animations.length; i++) {
+      const arrayBars = document.getElementsByClassName('pillar');
+      const isColorChange = i % 3 !== 2;
+      if (isColorChange) {
+        const [barOneIdx, barTwoIdx] = animations[i];
+        const barOneStyle = arrayBars[barOneIdx].style;
+        const barTwoStyle = arrayBars[barTwoIdx].style;
+        const color = i % 3 === 0 ? 'purple' : 'blue';
         barOneStyle.backgroundColor = color;
         barTwoStyle.backgroundColor = color;
-      }, i * ANIMATION_SPEED);
-    } else {
-      setTimeout(() => {
+        await timer(ANIMATION_SPEED);
+      } else {
         const [barOneIdx, newHeight] = animations[i];
         const barOne = arrayBars[barOneIdx];
-        /*         barOne.style.backgroundColor = 'purple'; */
         barOne.style.height = `${newHeight + 100}px`;
         barOne.textContent = newHeight;
-        /*       setTimeout(() => {}, i * (ANIMATION_SPEED * 0.1)); */
-        /*     barOne.style.backgroundColor = 'red'; */
-      }, i * ANIMATION_SPEED);
+        await timer(ANIMATION_SPEED);
+      }
     }
   }
+  await load();
+  return false;
 }

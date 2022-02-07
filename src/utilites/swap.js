@@ -1,5 +1,4 @@
 export const swap = (arr, v1, v2) => {
-  console.log(arr, v1, v2);
   let temp = arr[v1];
   let tempDOM = document.getElementById(`${v1}`);
   let tempHeight = tempDOM.style.height;

@@ -20,7 +20,7 @@ async function heapify(arr, n, i) {
       key2.style.height = height;
       key2.style.backgroundColor = 'purple';
       key1.style.backgroundColor = 'purple';
-      await timer(200);
+      await timer(300);
       arr[i] = arr[biggest];
       arr[biggest] = temp;
       await heapify(arr, n, biggest);
@@ -52,4 +52,5 @@ export async function heapSort(arr) {
     temp[i] = swap;
     await heapify(temp, i, 0);
   }
+  return false;
 }

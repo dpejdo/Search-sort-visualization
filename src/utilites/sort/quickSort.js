@@ -14,11 +14,11 @@ let partition = async (arr, left, right) => {
         elem1.style.backgroundColor = 'blue';
         let elem2 = document.getElementById(j);
         elem2.style.backgroundColor = 'blue';
-        await timer(20);
+        await timer(150);
         swap(arr, i, j);
         i++;
         j--;
-        await timer(20);
+        await timer(150);
         elem1.style.backgroundColor = 'red';
         elem2.style.backgroundColor = 'red';
       }
@@ -43,4 +43,5 @@ let quickSort = async (arr, left, right) => {
 };
 export let quickSortVisual = async (arr) => {
   await quickSort(arr, 0, arr.length - 1);
+  return false;
 };

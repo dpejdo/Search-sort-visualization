@@ -6,19 +6,22 @@ export async function selectionSort(value) {
       let min = i;
       let current = document.getElementById(i);
       current.style.backgroundColor = 'purple';
-      await timer(40);
+      await timer(100);
 
       for (let j = i + 1; j < value.length; j++) {
         let current = document.getElementById(j);
         current.style.backgroundColor = 'blue';
-        await timer(50);
+        await timer(100);
         if (value[j] < value[min]) min = j;
         current.style.backgroundColor = 'red';
       }
       let minDOM = document.getElementById(min);
-      minDOM.style.backgroundColor = 'blue';
-      await timer(20);
+      minDOM.style.backgroundColor = 'purple';
+      await timer(160);
       swap(value, i, min);
+
+      minDOM.style.backgroundColor = 'purple';
+      await timer(160);
       minDOM.style.backgroundColor = 'red';
 
       current.style.backgroundColor = 'green';
@@ -27,4 +30,5 @@ export async function selectionSort(value) {
     return value;
   }
   await load();
+  return false;
 }

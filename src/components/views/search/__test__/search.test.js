@@ -21,10 +21,6 @@ let names = [
   'Exponential search',
 ];
 for (let i in arr) {
-  /*  beforeEach(() => {
-    render(<Grid func={arr[i]} label={names[i]} />);
-  }); */
-
   test(`${names[i]} test`, async () => {
     render(<Grid func={arr[i]} label={names[i]} />);
     let input = screen.getByRole('textbox', {
@@ -60,11 +56,6 @@ for (let i in arr) {
   }, 10000);
 
   test(`${names[i]} test check if element is not found and pass the error message`, async () => {
-    /*  act(() => {
-    let { debug } = render(<Grid func={binarySearch} label={'Binary search'} />);
-
-    debug();
-  }); */
     render(<Grid func={arr[i]} label={names[i]} />);
 
     let input = screen.getByRole('textbox', {
