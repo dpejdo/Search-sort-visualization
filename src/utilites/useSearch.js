@@ -44,14 +44,16 @@ export const useSearch = () => {
     else setSearch({ ...search, error: 'Reached max length of array', isFound: '' });
   }
   function startSearch(prop, label) {
-    console.log(search);
+    console.log(search, prop);
     if (search.searchValue) {
       resetCss();
       isLinear(label);
       setSearch({ ...search, isFound: '' });
-      prop(search.array, 0, search.array.length - 1, Number(search.searchValue)).then((data) => {
-        if (data == -1) setSearch({ ...search, isFound: 'Element is not found' });
-      });
+      prop([...search.array], 0, search.array.length - 1, Number(search.searchValue)).then(
+        (data) => {
+          if (data == -1) setSearch({ ...search, isFound: 'Element is not found' });
+        }
+      );
       setSearch({ ...search, isEmpty: '', isFound: '' });
     } else {
       setSearch({ ...search, isEmpty: 'Please enter the value ' });

@@ -37,6 +37,5 @@ export const useAlgorithm = () => {
     isSort: true,
     name: 'Selection sort',
   });
-  console.log('ovo je unutar useAlgorithma', state, dispatch);
   return [state, dispatch];
 };

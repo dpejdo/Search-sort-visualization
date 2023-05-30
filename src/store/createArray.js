@@ -3,16 +3,18 @@ const ARRAY_LIMIT = 12;
 const genRandom = () => {
   return Math.floor(Math.random() * (100 * 5 - 1) + 1);
 };
-const createArray = (set, get) => ({
-  array: ARRAY,
-  limit: ARRAY_LIMIT,
-  setLimit: (value) => set(() => ({ limit: ARRAY_LIMIT * value })),
-  setArray: () =>
-    set(() => {
-      let temp = [];
-      console.log(get().limit);
-      for (let i = 0; i < get().limit; i++) temp.push(genRandom());
-      return { array: temp };
-    }),
-});
+function createArray() {
+  let array = ARRAY;
+  let limit = ARRAY_LIMIT;
+  const setLimit = (value) => (limit = ARRAY_LIMIT * value);
+  const setArray = () => {
+    const temp = [];
+    for (let i = 0; i < limit; i++) temp.push(genRandom());
+    array = temp;
+  };
+  const getArray = () => {
+    return array;
+  };
+  return { array, getArray, limit, setLimit, setArray };
+}
 export default createArray;

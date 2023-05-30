@@ -1,8 +1,11 @@
-const createSpeed = (set, get) => ({
-  speed: 1,
-  setSpeed: (value) => set({ speed: value }),
-  getSpeed: () => {
-    return get().speed;
-  },
-});
+const createSpeed = () => {
+  let speed = 1;
+  const setSpeed = (value) => {
+    speed = value;
+  };
+  const getSpeed = () => {
+    return speed;
+  };
+  return { setSpeed, getSpeed };
+};
 export default createSpeed;

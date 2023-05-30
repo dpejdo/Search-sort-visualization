@@ -1,13 +1,5 @@
-import { useEffect } from 'react';
-import useStore from '../../../store/useStore';
-export const Graph = () => {
-  const array = useStore((state) => state.array);
-  const setArray = useStore((state) => state.setArray);
-  useEffect(() => {
-    setArray();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+/* eslint-disable react/prop-types */
+export const Graph = ({ array }) => {
   return (
     <div>
       <div data-testid="graph" className="flex justify-center items-start h-2/3 max-h-full">

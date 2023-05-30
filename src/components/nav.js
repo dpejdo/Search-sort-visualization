@@ -1,19 +1,32 @@
-import useStore from '../store/useStore';
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useAlgorithm } from '../utilites/reducer';
 const resetStyle = () => {
   const allElements = document.querySelectorAll('.pillar');
   allElements.forEach((value) => (value.style.backgroundColor = 'red'));
 };
-function Navbar() {
+const SEARCH = [
+  'Linear search',
+  'Binary search',
+  'Jump search',
+  'Exponential search',
+  'Interpolation search',
+];
+const SORT = [
+  'Selection sort',
+  'Bubble sort',
+  'Insertion sort',
+  'Merge sort',
+  'Heap sort',
+  'Quick sort',
+];
+
+function Navbar({ handleClick, setArray, factor }) {
   const [value, setValue] = useState('1');
   const [algorithm, setAlgorithm] = useAlgorithm();
   const [isDisabled, setDisabled] = useState(false);
-  let reset = useStore((state) => state.setArray);
-  let setSpeed = useStore((state) => state.setSpeed);
-  let get = useStore((state) => state);
   useEffect(() => {
-    get.setFunction(algorithm);
+    factor.setFunction(algorithm);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [algorithm, setAlgorithm]);
 
@@ -84,51 +97,22 @@ function Navbar() {
                   className="py-1"
                   aria-labelledby="dropdownButton"
                   onClick={(e) => {
+                    handleClick(false);
                     setAlgorithm({ type: e.target.textContent });
                     resetStyle();
-                    reset();
+                    factor.setArray();
                   }}
                 >
-                  <li>
-                    <a
-                      // href="/linear-search"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Linear search
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/binary-search"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Binary search
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      /*  href="/jump-search" */
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Jump search
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/exponential-search"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Exponential search
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/interpolation-search"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Interpolation search
-                    </a>
-                  </li>
+                  {SEARCH.map((val) => (
+                    <li key={val}>
+                      <a
+                        // href="/linear-search"
+                        className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        {val}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>
@@ -161,74 +145,32 @@ function Navbar() {
                   className="py-1"
                   aria-labelledby="dropdownButton"
                   onClick={(e) => {
+                    handleClick(true);
                     setAlgorithm({ type: e.target.textContent });
                     resetStyle();
-                    reset();
+                    factor.setArray();
                   }}
                 >
-                  <li>
-                    <a
-                      // href="/selection-sort"
-                      data-testid="selection sort"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Selection sort
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/bubble-sort"
-                      data-testid="bubble sort"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Bubble sort
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/insertion-sort"
-                      data-testid="insertion sort"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Insertion sort
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/merge-sort"
-                      data-testid="merge sort"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Merge sort
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/heap-sort"
-                      data-testid="heap sort"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Heap sort
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      // href="/quick-sort"
-                      data-testid="quick sort"
-                      className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    >
-                      Quick sort
-                    </a>
-                  </li>
+                  {SORT.map((val) => (
+                    <li key={val}>
+                      <a
+                        // href="/selection-sort"
+                        data-testid={val.toLowerCase()}
+                        className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      >
+                        {val}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>
-            {get.isSort && (
+            {factor.getFunction().isSort && (
               <button
                 className="border px-2"
                 type="button"
                 onClick={() => {
-                  reset();
+                  factor.setArray();
                   resetStyle();
                 }}
                 disabled={isDisabled}
@@ -236,7 +178,7 @@ function Navbar() {
                 New array
               </button>
             )}
-            {get.isSort && (
+            {factor.getFunction().isSort && (
               <div className="flex justify-around content-center">
                 <input
                   type="range"
@@ -248,9 +190,10 @@ function Navbar() {
                   disabled={isDisabled}
                   onChange={(e) => {
                     setValue(e.target.value);
-                    setSpeed(e.target.value);
-                    get.setLimit(e.target.value);
-                    get.setArray();
+                    factor.setSpeed(e.target.value);
+                    factor.setLimit(e.target.value);
+                    factor.setArray();
+                    setArray(factor.getArray());
                     resetStyle();
                   }}
                 />
@@ -263,7 +206,9 @@ function Navbar() {
                   type="button"
                   onClick={() => {
                     setDisabled(true);
-                    console.log(algorithm.algorithm(get.array).then((data) => setDisabled(data)));
+                    console.log(
+                      algorithm.algorithm(factor.getArray()).then((data) => setDisabled(data))
+                    );
                   }}
                   disabled={isDisabled}
                 >
@@ -271,8 +216,7 @@ function Navbar() {
                 </button>
               </div>
             )}
-
-            <p className="px-3 font-extrabold">{get.currentFunctionName}</p>
+            <p className="px-3 font-extrabold">{algorithm.name}</p>
           </ul>
         </div>
       </div>
