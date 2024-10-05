@@ -61,4 +61,4 @@ This will open the project in your browser at `http://localhost:3000`.
 
 ## Notes
 
-- Refactored version of code on `feature/generator-func`, using generators to display swaps and actions of sorting
+- Refactored version of code on [feature/generator-func](https://github.com/dpejdo/Search-sort-visualization/tree/feature/generator-func), using generators to display swaps and actions of sorting
