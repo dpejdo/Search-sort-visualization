@@ -1,144 +1,103 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(36, 36, 36);
-  color: rgb(255, 255, 255);
-  height: 100vh;
-}
-#root {
-  height: 100vh;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+.container {
+	font-family: 'Arial', sans-serif;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f0f0f0;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+.title {
+	text-align: center;
+	color: #333;
 }
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
+
+.visualizer {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 20px;
 }
-body {
-  line-height: 1;
+
+.array-container {
+	height: 300px;
+	position: relative;
+	margin: 0 auto;
 }
-ol,
-ul {
-  list-style: none;
+
+.bar {
+	position: absolute;
+	bottom: 0;
+	background-color: #3498db;
+	transition: height 0.3s ease;
 }
-blockquote,
-q {
-  quotes: none;
+.bar {
+	background-color: #3498db;
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
+.bar.compare {
+	background-color: #f1c40f;
 }
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+.bar.swap {
+	background-color: #e74c3c;
+}
+.bar.sorted {
+	background-color: #2ecc71;
+}
+.bar-label {
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 10px;
+	white-space: nowrap;
+}
+
+.controls {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.stats {
+	display: flex;
+	justify-content: space-around;
+	background-color: white;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+button {
+	padding: 10px 15px;
+	background-color: #3498db;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: #2980b9;
+}
+
+.algorithms {
+	background-color: white;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.algorithm-option {
+	display: block;
+	margin-bottom: 10px;
+}
+
+input[type='radio'] {
+	margin-right: 10px;
 }
